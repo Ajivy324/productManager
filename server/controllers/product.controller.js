@@ -13,3 +13,13 @@ module.exports.createProduct = (request, response) => {
         .catch(err => response.json(err));
 }
 
+module.exports.findAllProducts = (req, res) => {
+    Product.find()
+        .then((allProducts) => {
+            res.json({ products: allProducts })
+        })
+        .catch((err) => {
+            res.json({ message: 'Something is not right', error: err })
+        });
+}
+
